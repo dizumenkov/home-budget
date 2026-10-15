@@ -1,0 +1,103 @@
+/* comparison.css — стили страницы (авто-экстракция) */
+
+:root {
+    --bg: #f5f6f8; --panel: #ffffff; --border: #dcdfe4;
+    --accent: #ffcc00; --accent-dark: #e0b200;
+    --text: #1f2328; --muted: #6b7280; --danger: #d33;
+  }
+  * { box-sizing: border-box; }
+  body { margin: 0; background: var(--bg); color: var(--text);
+    font: 14px/1.45 -apple-system, Segoe UI, Roboto, Arial, sans-serif; }
+  header { background: var(--panel); border-bottom: 1px solid var(--border);
+    padding: 14px 20px; }
+  h1 { margin: 0 0 4px; font-size: 18px; padding-right: 40px; }
+  h1 a { color: var(--muted); font-size: 14px; font-weight: 400;
+    margin-left: 12px; text-decoration: none; }
+  h1 a:hover { color: var(--text); text-decoration: underline; }
+  h1 a.accent { color: #0a58ca; }
+  h1 a.accent:hover { color: #084298; }
+  main { padding: 16px 20px; }
+  .card { background: var(--panel); border: 1px solid var(--border);
+    border-radius: 8px; padding: 16px; margin-bottom: 16px; }
+  .good { font-size: 16px; font-weight: 600; margin-bottom: 4px; }
+
+  /* ---- каскад селектов по категории ---- */
+  .cat-block {
+    padding: 14px 0;
+    border-bottom: 1px dashed var(--border);
+  }
+  .cat-block:last-child { border-bottom: none; padding-bottom: 0; }
+  .cat-block:first-child { padding-top: 0; }
+  .cat-title {
+    font-weight: 600; font-size: 15px;
+    margin-bottom: 8px; display: flex;
+    align-items: center; gap: 8px;
+  }
+  .levels { display: flex; flex-direction: column; gap: 6px; }
+  .level { display: flex; align-items: center; gap: 8px; }
+  .level .lvl-label {
+    color: var(--muted); font-size: 12px; min-width: 60px;
+  }
+  .level select {
+    padding: 6px 10px; border: 1px solid var(--border);
+    border-radius: 6px; font: inherit; background: #fff;
+    flex: 1 1 auto; max-width: 520px;
+  }
+  .level select:focus { outline: 2px solid var(--accent); outline-offset: -1px; }
+  .level select:disabled { background: #f0f1f3; color: var(--muted); }
+  .level .chosen-mark {
+    color: #1a7f37; font-weight: 700; font-size: 12px; min-width: 14px;
+  }
+
+  #status { margin-top: 8px; color: var(--muted); font-size: 13px;
+    min-height: 18px; }
+  .empty { color: var(--muted); font-style: italic; padding: 8px 0; }
+  .empty a { color: #0a58ca; }
+  .saved { color: #1a7f37; }
+  .toolbar { display: flex; gap: 8px; align-items: center;
+    margin-top: 12px; flex-wrap: wrap; }
+  button {
+    background: var(--accent); border: 1px solid var(--accent-dark);
+    padding: 6px 12px; border-radius: 6px; cursor: pointer; font-weight: 600;
+  }
+  button:hover { background: var(--accent-dark); }
+  button.close {
+    background: #fff; border: 1px solid var(--border); color: var(--text);
+  }
+  button.close:hover { background: #f0f1f3; }
+  button.sm { padding: 4px 10px; font-size: 13px; }
+  button.del { background: #fff; color: var(--danger);
+    border-color: #f0c8c8; padding: 4px 10px; font-size: 13px; }
+  button.del:hover { background: #ffecec; }
+
+  /* ---- блок привязанных products ---- */
+  .products-block h3 { margin: 0 0 10px; font-size: 15px; }
+  .products-list { list-style: none; padding: 0; margin: 0;
+    border-top: 1px solid var(--border); }
+  .products-list li {
+    display: flex; align-items: center; gap: 8px;
+    padding: 8px 2px; border-bottom: 1px solid var(--border);
+  }
+  .products-list li:last-child { border-bottom: none; }
+  .products-list .product-name { flex: 1 1 auto; min-width: 0;
+    overflow: hidden; text-overflow: ellipsis; white-space: nowrap; }
+  .products-list .actions { display: flex; gap: 6px; }
+
+  /* ---- модалка смены продукта ---- */
+  .change-modal { position: fixed; inset: 0; z-index: 200;
+    display: flex; align-items: center; justify-content: center; }
+  .change-modal[hidden] { display: none; }
+  .change-backdrop { position: absolute; inset: 0;
+    background: rgba(15, 20, 30, 0.45); }
+  .change-content {
+    position: relative; background: #fff; border-radius: 10px;
+    width: min(560px, 92vw); padding: 20px 22px;
+    box-shadow: 0 24px 64px rgba(0,0,0,0.35);
+  }
+  .change-content h2 { margin: 0 0 8px; font-size: 16px; }
+  .change-content .hint { color: var(--muted); font-size: 13px;
+    margin-bottom: 10px; }
+  .change-name { font-weight: 600; margin-bottom: 12px; }
+  .change-content select { width: 100%; max-width: none; }
+  .change-actions { display: flex; gap: 8px; justify-content: flex-end;
+    margin-top: 16px; }

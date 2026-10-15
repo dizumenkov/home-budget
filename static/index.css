@@ -1,0 +1,107 @@
+/* ============================================================
+ * index.css — стили главной страницы
+ * ============================================================ */
+
+header { position: sticky; top: 0; z-index: 5; }
+
+main table { width: 100%; border-collapse: collapse; background: var(--panel);
+  border: 1px solid var(--border); border-radius: 8px; overflow: hidden;
+  table-layout: fixed; }
+main th, main td { padding: 8px 10px; text-align: left;
+  border-bottom: 1px solid var(--border);
+  overflow: hidden; text-overflow: ellipsis; }
+main th { background: #fafbfc; cursor: pointer; user-select: none;
+  white-space: nowrap; font-size: 13px; }
+main th .arrow { color: var(--muted); font-size: 11px; margin-left: 4px; }
+main th.expander, main td.expander { width: 40px; text-align: center; cursor: default;
+  overflow: visible; text-overflow: clip; }
+main tr:last-child td { border-bottom: none; }
+main tr:nth-child(even) td { background: #fcfcfd; }
+main td.code { white-space: nowrap; }
+main td.sum { white-space: nowrap; text-align: right; }
+main td.user { white-space: nowrap; }
+main td.actions { white-space: nowrap; width: 130px; text-align: right;
+  overflow: visible; text-overflow: clip; }
+
+.icon-btn { padding: 2px 6px; font-size: 12px; line-height: 1;
+  background: #f0f1f3; border: 1px solid var(--border); border-radius: 4px;
+  cursor: pointer; font-weight: 700; margin-left: 2px; }
+.icon-btn:hover { background: #e6e8eb; }
+.icon-btn.del { color: var(--danger); border-color: #f0c8c8; background: #fff; }
+.icon-btn.del:hover { background: #ffecec; }
+.icon-btn.edit { color: #0a58ca; border-color: #c8dcf5; background: #fff; }
+.icon-btn.edit:hover { background: #eef5ff; }
+.icon-btn.qr { color: #7a5a00; border-color: #e0b200; background: #fff7dd; }
+.icon-btn.qr:hover { background: #ffedb0; }
+.icon-btn.view { color: #1a7f37; border-color: #b6e6c2; background: #fff; }
+.icon-btn.view:hover { background: #eafbef; }
+
+tr.items-row td { background: #f8f9fb; padding: 10px; overflow: visible; }
+tr.items-row table { border: 1px solid var(--border); table-layout: auto; }
+tr.items-row th { background: #eef0f3; cursor: default; font-size: 12px; padding: 5px 8px; }
+tr.items-row td { padding: 5px 8px; font-size: 13px; }
+
+.pager { display: flex; gap: 12px; align-items: center; margin-top: 12px; flex-wrap: wrap; }
+.pager select { padding: 4px 6px; }
+
+.empty { text-align: center; color: var(--muted); padding: 24px; }
+.link-good { color: #0a58ca; text-decoration: underline; cursor: pointer; }
+
+.comp-badge {
+  display: inline-block;
+  color: #b42318;
+  background: #ffe1e1;
+  border: 1px solid #f0c8c8;
+  border-radius: 10px;
+  padding: 1px 7px;
+  font-size: 11px;
+  font-weight: 700;
+  margin-right: 6px;
+  vertical-align: middle;
+  white-space: nowrap;
+  cursor: default;
+}
+
+.product-input {
+  padding: 3px 8px;
+  border: 1px solid #f0c8c8;
+  background: #fffafa;
+  border-radius: 4px;
+  font: inherit;
+  font-size: 13px;
+  width: 100%;
+  max-width: 260px;
+  color: var(--text);
+}
+.product-input::placeholder { color: #b8a3a3; }
+.product-input:focus {
+  outline: 2px solid var(--accent);
+  outline-offset: -1px;
+}
+.product-input:disabled { opacity: .5; cursor: not-allowed; }
+
+tr.row-problems td { background: #fff4cc; }
+tr.row-problems:nth-child(even) td { background: #fff0bd; }
+tr.row-problems td:first-child { box-shadow: inset 4px 0 0 #e0b200; }
+
+.presets { display: inline-flex; gap: 4px; }
+tr.main-row { cursor: pointer; }
+tr.main-row:hover td { background: #f0f6ff; }
+
+.date-filter {
+  display: inline-flex;
+  align-items: center;
+  gap: 8px;
+  flex-wrap: nowrap;
+  white-space: nowrap;
+}
+
+/* ---------- заголовок с кнопками справа ---------- */
+h1 {
+  display: flex;
+  align-items: center;
+  flex-wrap: wrap;
+  gap: 0;
+}
+h1 > span.h1-spacer { flex: 1 1 auto; }
+h1 button.icon { margin-left: 4px; }

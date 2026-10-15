@@ -1,0 +1,70 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+<meta charset="utf-8">
+<title>Ручной ввод чека</title>
+
+<link rel="stylesheet" href="/static/buttons.css">
+<link rel="stylesheet" href="/static/common.css">
+<link rel="stylesheet" href="/static/manual.css">
+</head>
+<body>
+<header>
+  <h1>
+    <span id="page-title">Ручной ввод чека</span>
+    <a href="#" id="nav-close">← закрыть</a>
+  </h1>
+</header>
+
+<main>
+  <div class="card">
+    <div class="row">
+      <label>Дата чека
+        <input type="datetime-local" id="check_at">
+      </label>
+      <label>Продавец
+        <input type="text" id="user" list="users-list"
+               placeholder="название продавца">
+      </label>
+      <label>Код ответа
+        <span class="readonly">100 — ручной ввод</span>
+      </label>
+      <label>Сумма
+        <span class="readonly sum" id="total-sum">0,00 ₽</span>
+      </label>
+    </div>
+  </div>
+
+  <div class="card">
+    <table class="items">
+      <thead>
+        <tr>
+          <th style="width:50%">Наименование</th>
+          <th class="num" style="width:15%">Цена</th>
+          <th class="num" style="width:12%">Кол-во</th>
+          <th class="num" style="width:15%">Сумма</th>
+          <th style="width:40px"></th>
+        </tr>
+      </thead>
+      <tbody id="items-body"></tbody>
+    </table>
+    <div class="toolbar">
+      <button id="btn-add-row" type="button">+ Добавить товар</button>
+    </div>
+  </div>
+
+  <div class="card actions-card">
+    <button id="btn-save" type="button">Сохранить чек</button>
+    <button id="btn-cancel" type="button" class="ghost">Отмена</button>
+    <span id="status"></span>
+  </div>
+</main>
+
+<datalist id="goods-list"></datalist>
+<datalist id="users-list"></datalist>
+
+
+<script src="/static/common.js" defer></script>
+<script src="/static/manual.js" defer></script>
+</body>
+</html>

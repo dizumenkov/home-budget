@@ -1,0 +1,129 @@
+/* settings.css — стили страницы настроек */
+
+main { max-width: 900px; padding-bottom: 80px; }
+
+.banner {
+  background: #fff4cc;
+  border: 1px solid #e0b200;
+  border-radius: 8px;
+  padding: 10px 14px;
+  margin-bottom: 16px;
+  color: #7a5a00;
+  font-size: 13px;
+}
+
+.card h2 {
+  margin: 0 0 12px;
+  font-size: 15px;
+}
+
+.field {
+  display: flex;
+  flex-direction: column;
+  gap: 4px;
+  margin-bottom: 10px;
+}
+.field label { color: var(--muted); font-size: 12px; }
+.field input[type=text],
+.field input[type=number],
+.field input[type=password] { width: 100%; }
+
+.field.checkbox {
+  flex-direction: row;
+  align-items: center;
+  gap: 8px;
+  margin-bottom: 10px;
+}
+.field.checkbox label {
+  display: flex;
+  align-items: center;
+  gap: 6px;
+  color: var(--text);
+  font-size: 13px;
+  cursor: pointer;
+}
+
+.grid-2 {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 12px;
+}
+@media (max-width: 640px) {
+  .grid-2 { grid-template-columns: 1fr; }
+}
+
+.secret-wrap {
+  display: flex;
+  gap: 4px;
+}
+.secret-wrap input { flex: 1; }
+.toggle-secret {
+  padding: 6px 8px;
+  border: 1px solid var(--border);
+  background: #fff;
+  border-radius: 6px;
+  cursor: pointer;
+  font-size: 13px;
+  line-height: 1;
+}
+.toggle-secret:hover { background: #f0f1f3; }
+
+.actions {
+  display: flex;
+  gap: 8px;
+  flex-wrap: wrap;
+  padding: 14px 0;
+  position: sticky;
+  bottom: 0;
+  background: linear-gradient(to top, var(--bg) 60%, transparent);
+}
+
+/* ---------- модалка с QR ---------- */
+.qr-modal { position: fixed; inset: 0; z-index: 150;
+  display: flex; align-items: center; justify-content: center; }
+.qr-modal[hidden] { display: none; }
+.qr-backdrop { position: absolute; inset: 0;
+  background: rgba(15, 20, 30, 0.45); }
+.qr-content {
+  position: relative; background: #fff; border-radius: 10px;
+  width: min(480px, 94vw); padding: 20px 22px;
+  box-shadow: 0 24px 64px rgba(0,0,0,0.35);
+  display: flex; flex-direction: column; gap: 10px;
+}
+.qr-content h2 { margin: 0; font-size: 16px; }
+.qr-hint { color: var(--muted); font-size: 13px; }
+.qr-container {
+  align-self: center;
+  padding: 8px;
+  background: #fff;
+  border: 1px solid var(--border);
+  border-radius: 8px;
+  min-height: 288px;
+  min-width: 288px;
+  display: flex; align-items: center; justify-content: center;
+}
+.qr-container img,
+.qr-container canvas { display: block; }
+.qr-json {
+  margin: 0;
+  padding: 10px 12px;
+  background: #f5f6f8;
+  border: 1px solid var(--border);
+  border-radius: 6px;
+  font: 12px/1.5 ui-monospace, Menlo, Consolas, monospace;
+  color: #1f2328;
+  white-space: pre-wrap;
+  word-break: break-all;
+  max-height: 130px;
+  overflow: auto;
+}
+.qr-error {
+  color: var(--danger);
+  font-size: 13px;
+  text-align: center;
+  max-width: 260px;
+}
+.qr-actions {
+  display: flex; gap: 8px; justify-content: flex-end;
+  margin-top: 4px;
+}

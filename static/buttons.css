@@ -1,0 +1,16 @@
+/* Единый стиль кнопок для всех страниц */
+button, button.ghost, button.close, button.del, button.sm, button.del-row,
+.icon-btn, .icon-btn.del, .icon-btn.edit, .modal-close, .type-toggle button {
+  background: #ffcc00 !important;
+  border: 1px solid #e0b200 !important;
+  color: #1f2328 !important;
+  border-radius: 6px !important;
+  font-weight: 600 !important;
+  cursor: pointer;
+}
+button:hover, button.ghost:hover, button.close:hover, button.del:hover, button.del-row:hover,
+.icon-btn:hover, .modal-close:hover, .type-toggle button:hover {
+  background: #e0b200 !important;
+}
+button:disabled { opacity: .5; cursor: not-allowed; }
+.type-toggle button.active { background: #e0b200 !important; box-shadow: inset 0 0 0 2px #1f2328; }

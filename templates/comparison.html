@@ -1,0 +1,61 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+<meta charset="utf-8">
+<title>Соответствия товара</title>
+
+<link rel="stylesheet" href="/static/buttons.css">
+<link rel="stylesheet" href="/static/common.css">
+<link rel="stylesheet" href="/static/comparison.css">
+</head>
+<body>
+<header>
+  <h1>
+    Соответствия товара
+    <a href="/" id="nav-back">← к чекам</a>
+    <a class="accent" href="/categories" target="_blank" rel="noopener">
+      Категории и метки ↗
+    </a>
+  </h1>
+</header>
+
+<main>
+  <div class="card">
+    <div class="good" id="good-name">Загрузка…</div>
+    <div id="rows"></div>
+    <div class="toolbar">
+      <button id="btn-open-categories" type="button">
+        Редактировать категории и метки
+      </button>
+      <button id="btn-reload" type="button">Обновить</button>
+      <button id="btn-close" class="close" type="button">Закрыть</button>
+    </div>
+  </div>
+
+  <div class="card products-block" id="products-block" hidden>
+    <h3>Привязанные товары</h3>
+    <ul class="products-list" id="products-list"></ul>
+  </div>
+
+  <div id="status"></div>
+</main>
+
+<div id="change-modal" class="change-modal" hidden>
+  <div class="change-backdrop" id="change-backdrop"></div>
+  <div class="change-content">
+    <h2>Сменить продукт</h2>
+    <div class="hint">Выберите продукт из справочника для сырого наименования.</div>
+    <div class="change-name" id="change-name"></div>
+    <select id="change-select"></select>
+    <div class="change-actions">
+      <button id="change-cancel" class="close" type="button">Отмена</button>
+      <button id="change-apply" type="button">Применить</button>
+    </div>
+  </div>
+</div>
+
+
+<script src="/static/common.js" defer></script>
+<script src="/static/comparison.js" defer></script>
+</body>
+</html>

@@ -1,0 +1,98 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+<meta charset="utf-8">
+<title>Анализ — Домашний бюджет</title>
+<link rel="stylesheet" href="/static/buttons.css">
+<link rel="stylesheet" href="/static/common.css">
+<link rel="stylesheet" href="/static/analysis.css">
+<script src="/static/chart.umd.min.js"></script>
+</head>
+<body>
+<header>
+  <h1>
+    Анализ по категории
+    <a href="/">← к чекам</a>
+  </h1>
+</header>
+
+<main>
+  <div class="card">
+    <div class="row">
+      <label>Дата чека с <input type="date" id="date_from"></label>
+      <label>по <input type="date" id="date_to"></label>
+      <label>Категория
+        <select id="category"><option value="">— выберите —</option></select>
+      </label>
+      <label>Диаграмма
+        <select id="chart_type">
+          <option value="none" selected>— Не выводить —</option>
+          <option value="doughnut">Круговая</option>
+          <option value="bar">Столбчатая</option>
+          <option value="treemap">Квадратная</option>
+        </select>
+      </label>
+      <label>Расчет процента
+        <select id="pct_mode">
+          <option value="total" selected>от общей</option>
+          <option value="group">от группы</option>
+        </select>
+      </label>
+      <label class="check" title="Включить в расчёт товары без установленной метки">
+        <input type="checkbox" id="include_unset" checked>
+        учитывать товары без метки
+      </label>
+      <button id="btn-build">Построить</button>
+    </div>
+    <div id="status"></div>
+  </div>
+
+  <div class="card" id="result-card" hidden>
+    <div class="totals">
+      Итого по категории «<span id="cat-name"></span>» за период:
+      <b id="total-sum">0</b>
+    </div>
+    <div class="chart-wrap" id="chart-wrap" hidden>
+      <canvas id="chart"></canvas>
+      <div id="chart-svg" hidden></div>
+      <div class="chart-empty" id="chart-empty" hidden>Все товары неразмечены</div>
+      <div class="svg-tip" id="svg-tip" hidden></div>
+    </div>
+  </div>
+
+  <div class="card" id="table-card" hidden>
+    <table>
+      <thead>
+        <tr>
+          <th>Метка</th>
+          <th class="num">Сумма</th>
+          <th class="num">Процент</th>
+          <th class="num">Позиций</th>
+          <th class="num">Чеков</th>
+        </tr>
+      </thead>
+      <tbody id="tbody"></tbody>
+    </table>
+  </div>
+</main>
+
+<div id="modal" class="modal" hidden>
+  <div class="modal-backdrop" id="modal-backdrop"></div>
+  <div class="modal-content">
+    <button class="modal-close" id="modal-close" title="Закрыть (Esc)">✕</button>
+    <div id="modal-list" class="modal-view">
+      <div class="modal-list-header">
+        <div class="modal-list-title" id="modal-list-title">—</div>
+        <div class="modal-list-sub" id="modal-list-sub">Загрузка…</div>
+      </div>
+      <ul class="modal-list-items" id="modal-list-items"></ul>
+    </div>
+    <iframe id="modal-frame" class="modal-view" src="about:blank"
+            title="Соответствия товара" hidden></iframe>
+  </div>
+</div>
+
+<script src="/static/common.js" defer></script>
+<script src="/static/analysis.js" defer></script>
+</body>
+</html>

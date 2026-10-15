@@ -1,0 +1,65 @@
+/* manual.css — стили страницы (авто-экстракция) */
+
+:root {
+    --bg: #f5f6f8; --panel: #ffffff; --border: #dcdfe4;
+    --accent: #ffcc00; --accent-dark: #e0b200;
+    --text: #1f2328; --muted: #6b7280; --danger: #d33;
+  }
+  * { box-sizing: border-box; }
+  body { margin: 0; background: var(--bg); color: var(--text);
+    font: 14px/1.45 -apple-system, Segoe UI, Roboto, Arial, sans-serif; }
+  header { background: var(--panel); border-bottom: 1px solid var(--border);
+    padding: 14px 20px; }
+  h1 { margin: 0; font-size: 18px; padding-right: 40px; }
+  h1 a { color: var(--muted); font-size: 14px; font-weight: 400;
+    margin-left: 12px; text-decoration: none; }
+  h1 a:hover { color: var(--text); text-decoration: underline; }
+  main { padding: 16px 20px; }
+  .card { background: var(--panel); border: 1px solid var(--border);
+    border-radius: 8px; padding: 14px; margin-bottom: 14px; }
+  .row { display: flex; gap: 14px; flex-wrap: wrap; align-items: flex-end; }
+  .row label { display: flex; flex-direction: column; gap: 4px;
+    color: var(--muted); font-size: 12px; }
+  input[type=text], input[type=datetime-local],
+  input[type=number] {
+    padding: 6px 10px; border: 1px solid var(--border); border-radius: 6px;
+    font: inherit; background: #fff; min-width: 160px;
+  }
+  input[type=number] { text-align: right; }
+  .readonly {
+    display: inline-block; padding: 6px 10px;
+    background: #f0f1f3; border: 1px solid var(--border);
+    border-radius: 6px; color: #3a3f45; min-width: 160px;
+    font: inherit;
+  }
+  .readonly.sum { font-weight: 700; }
+
+  table.items { width: 100%; border-collapse: collapse; background: #fff;
+    border: 1px solid var(--border); border-radius: 6px; overflow: hidden; }
+  table.items th, table.items td {
+    padding: 6px 8px; border-bottom: 1px solid var(--border);
+    text-align: left; font-size: 13px; }
+  table.items th { background: #fafbfc; font-weight: 600; }
+  table.items th.num, table.items td.num { text-align: right; }
+  table.items tr:last-child td { border-bottom: none; }
+  table.items input[type=text] { width: 100%; min-width: 180px; }
+  table.items input[type=number] { width: 100%; }
+  .del-row {
+    padding: 2px 8px; font-size: 12px; line-height: 1;
+    background: #fff; color: var(--danger);
+    border: 1px solid #f0c8c8; border-radius: 4px; cursor: pointer;
+    font-weight: 700;
+  }
+  .del-row:hover { background: #ffecec; }
+
+  .toolbar { display: flex; gap: 8px; align-items: center; margin-top: 10px; }
+  button { background: var(--accent); border: 1px solid var(--accent-dark);
+    padding: 6px 12px; border-radius: 6px; cursor: pointer; font-weight: 600; }
+  button:hover { background: var(--accent-dark); }
+  button:disabled { opacity: .5; cursor: not-allowed; }
+  button.ghost { background: #fff; border-color: var(--border); color: var(--text); }
+  button.ghost:hover { background: #f0f1f3; }
+  .actions-card { display: flex; gap: 10px; align-items: center; }
+  #status { margin-left: 10px; color: var(--muted); font-size: 13px; }
+  #status.err { color: var(--danger); }
+  #status.ok { color: #1a7f37; }

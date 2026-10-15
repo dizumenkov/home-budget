@@ -1,0 +1,95 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+<meta charset="utf-8">
+<title>Домашний бюджет</title>
+<link rel="stylesheet" href="/static/buttons.css">
+<link rel="stylesheet" href="/static/common.css">
+<link rel="stylesheet" href="/static/index.css">
+</head>
+<body>
+<header>
+  <h1>
+    <span>Домашний бюджет</span>
+    <a href="/goods">Справочник товаров →</a>
+    <a href="/categories">Категории и метки →</a>
+    <a href="/analysis">Анализ →</a>
+    <a href="/compare-periods">Сравнение периодов →</a>
+    <a href="/periods-analysis">Анализ (по периодам) →</a>
+
+    <span class="h1-spacer"></span>
+
+    <button id="nav-settings" class="icon" type="button"
+            title="Настройки"
+            onclick="location.href='/settings'">⚙</button>
+    <button id="btn-quit" class="icon" type="button"
+            title="Выйти и остановить сервис">⏻</button>
+  </h1>
+
+  <div class="controls">
+    <button id="btn-read" title="Забрать новые чеки из очереди и запросить по ним данные в ФНС (может занять до 20 с)">Загрузить чеки</button>
+    <button id="nav-manual" type="button" class="ghost">Добавить 🗋</button>
+    <button id="nav-products" type="button" class="ghost">Сопоставить товары</button>
+    <span id="fns-limit"></span>
+
+    <span class="date-filter">
+      <label>Дата чека:
+        <input type="date" id="date_from"> — <input type="date" id="date_to">
+      </label>
+      <button id="btn-apply">Применить</button>
+      <button id="btn-reset">Сбросить</button>
+      <span class="presets">
+        <button type="button" class="ghost" data-days="0">Сегодня</button>
+        <button type="button" class="ghost" data-days="7">7 дней</button>
+        <button type="button" class="ghost" data-days="30">30 дней</button>
+      </span>
+    </span>
+  </div>
+  <div id="status"></div>
+</header>
+
+<main>
+  <table>
+    <thead>
+      <tr>
+        <th class="expander"></th>
+        <th data-sort="code" style="width:150px">Статус</th>
+        <th data-sort="check_at" style="width:140px">Дата чека</th>
+        <th data-sort="sum" style="width:100px; text-align:right">Сумма</th>
+        <th data-sort="user">Продавец</th>
+        <th style="width:130px; cursor:default"></th>
+      </tr>
+    </thead>
+    <tbody id="tbody"></tbody>
+  </table>
+
+  <div class="pager">
+    <button id="prev">◀</button>
+    <span id="pageinfo">—</span>
+    <button id="next">▶</button>
+    <label>на странице:
+      <select id="per_page">
+        <option>25</option>
+        <option selected>50</option>
+        <option>100</option>
+        <option>200</option>
+      </select>
+    </label>
+    <span id="sum-total" style="margin-left:auto;font-weight:600"></span>
+  </div>
+</main>
+
+<div id="modal" class="modal" hidden>
+  <div class="modal-backdrop" id="modal-backdrop"></div>
+  <div class="modal-content">
+    <button class="modal-close" id="modal-close" title="Закрыть (Esc)">✕</button>
+    <iframe id="modal-frame" src="about:blank" title="Модальное окно"></iframe>
+  </div>
+</div>
+
+<datalist id="goods-datalist"></datalist>
+
+<script src="/static/common.js" defer></script>
+<script src="/static/index.js" defer></script>
+</body>
+</html>

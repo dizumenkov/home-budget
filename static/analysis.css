@@ -1,0 +1,56 @@
+/* analysis.css — стили страницы «Анализ» */
+main { max-width: 1100px; }
+.totals { font-size: 15px; margin-bottom: 8px; }
+.totals b { font-size: 18px; }
+
+.chart-wrap { position: relative; height: 420px; }
+.chart-wrap[hidden] { display: none; }
+#chart-svg { position: absolute; inset: 0; }
+#chart-svg[hidden] { display: none; }
+#chart-svg svg { display: block; width: 100%; height: 100%; }
+.treemap-rect { cursor: pointer; transition: opacity .12s; }
+.treemap-rect:hover { opacity: .85; }
+.treemap-rect.no-action { cursor: default; }
+.svg-tip {
+  position: absolute;
+  background: rgba(30, 35, 40, 0.95); color: #fff;
+  padding: 6px 10px; border-radius: 6px;
+  font-size: 12px; line-height: 1.4;
+  pointer-events: none; z-index: 10; white-space: nowrap;
+  transform: translate(-50%, -100%);
+  margin-top: -8px;
+}
+.svg-tip[hidden] { display: none; }
+.chart-empty {
+  position: absolute; inset: 0;
+  display: flex; align-items: center; justify-content: center;
+  color: var(--muted); font-style: italic; font-size: 15px;
+  pointer-events: none;
+}
+.chart-empty[hidden] { display: none; }
+
+tr.clickable { cursor: pointer; }
+tr.clickable:hover td { background: #f0f6ff !important; }
+tr.row-accent td { background: #ffe4e1; }
+
+.expander-toggle { display: inline-block; width: 16px; text-align: center;
+  color: var(--muted); cursor: pointer; user-select: none;
+  font-size: 10px; margin-right: 2px; transition: color .15s; }
+.expander-toggle:hover { color: var(--text); }
+.folder-name { font-weight: 700; }
+
+.modal-view { display: flex; flex-direction: column; width: 100%; height: 100%; }
+.modal-view[hidden] { display: none; }
+#modal-frame { border: 0; flex: 1; width: 100%; height: 100%; background: #f5f6f8; }
+.modal-list-header { padding: 16px 20px 10px;
+  border-bottom: 1px solid var(--border); background: #fafbfc; }
+.modal-list-title { font-size: 16px; font-weight: 600; }
+.modal-list-sub { color: var(--muted); font-size: 13px; margin-top: 4px; }
+.modal-list-items { list-style: none; padding: 0; margin: 0;
+  overflow-y: auto; flex: 1; }
+.modal-list-items li { padding: 9px 20px;
+  border-bottom: 1px solid #f0f1f3; cursor: pointer; }
+.modal-list-items li:hover { background: #eef5ff; }
+.modal-list-empty { padding: 20px; color: var(--muted);
+  font-style: italic; text-align: center; cursor: default !important; }
+.modal-list-empty:hover { background: transparent !important; }

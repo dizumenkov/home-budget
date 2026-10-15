@@ -1,0 +1,215 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+<meta charset="utf-8">
+<title>Настройки — Домашний бюджет</title>
+<link rel="stylesheet" href="/static/buttons.css">
+<link rel="stylesheet" href="/static/common.css">
+<link rel="stylesheet" href="/static/settings.css">
+</head>
+<body>
+<header>
+  <h1>Настройки <a href="/">← к чекам</a></h1>
+  <div id="status"></div>
+</header>
+
+<main>
+  <div class="banner" id="banner" hidden></div>
+
+  <form id="settings-form" autocomplete="off">
+
+    <!-- SQS -->
+    <section class="card">
+      <h2>Yandex Message Queue</h2>
+
+      <div class="field">
+        <label>Endpoint URL</label>
+        <input type="text" data-path="sqs.endpoint_url">
+      </div>
+      <div class="field">
+        <label>Регион</label>
+        <input type="text" data-path="sqs.region">
+      </div>
+      <div class="grid-2">
+        <div class="field">
+          <label>Access Key ID</label>
+          <input type="text" data-path="sqs.aws_access_key_id">
+        </div>
+        <div class="field">
+          <label>Secret Access Key</label>
+          <div class="secret-wrap">
+            <input type="password" data-path="sqs.aws_secret_access_key">
+            <button type="button" class="toggle-secret" title="Показать/скрыть">👁</button>
+          </div>
+        </div>
+      </div>
+      <div class="field">
+        <label>Queue URL</label>
+        <input type="text" data-path="sqs.queue_url">
+      </div>
+
+      <div class="grid-2">
+        <div class="field">
+          <label>Wait Time (сек)</label>
+          <input type="number" min="0" max="20" data-path="sqs.wait_time_seconds">
+        </div>
+        <div class="field">
+          <label>Drain Wait (сек)</label>
+          <input type="number" min="0" max="20" data-path="sqs.drain_wait_seconds">
+        </div>
+      </div>
+      <div class="grid-2">
+        <div class="field">
+          <label>Max Messages (1–10)</label>
+          <input type="number" min="1" max="10" data-path="sqs.max_messages">
+        </div>
+        <div class="field">
+          <label>Visibility Timeout (сек)</label>
+          <input type="number" min="0" data-path="sqs.visibility_timeout">
+        </div>
+      </div>
+      <div class="field">
+        <button id="btn-show-qr" type="button" class="ghost">
+          Показать QR с параметрами подключения
+        </button>
+      </div>
+    </section>
+
+    <!-- База -->
+    <section class="card">
+      <h2>База данных</h2>
+      <div class="field">
+        <label>Путь к файлу SQLite (относительный — от корня проекта)</label>
+        <input type="text" data-path="database.path">
+      </div>
+    </section>
+
+    <!-- Время -->
+    <section class="card">
+      <h2>Часовой пояс</h2>
+      <div class="field">
+        <label>IANA-зона</label>
+        <input type="text" list="tz-list" data-path="timezone">
+        <datalist id="tz-list">
+          <option value="Europe/Moscow"></option>
+          <option value="Europe/Kaliningrad"></option>
+          <option value="Europe/Samara"></option>
+          <option value="Asia/Yekaterinburg"></option>
+          <option value="Asia/Omsk"></option>
+          <option value="Asia/Krasnoyarsk"></option>
+          <option value="Asia/Irkutsk"></option>
+          <option value="Asia/Yakutsk"></option>
+          <option value="Asia/Vladivostok"></option>
+          <option value="Asia/Magadan"></option>
+          <option value="Asia/Kamchatka"></option>
+          <option value="UTC"></option>
+        </datalist>
+      </div>
+    </section>
+
+    <!-- Планировщик -->
+    <section class="card">
+      <h2>Планировщик</h2>
+      <div class="field checkbox">
+        <label>
+          <input type="checkbox" data-path="scheduler.enabled">
+          Включён
+        </label>
+      </div>
+      <div class="field">
+        <label>Интервал опроса очереди (сек)</label>
+        <input type="number" min="10" data-path="scheduler.interval_seconds">
+      </div>
+    </section>
+
+    <!-- proverkacheka -->
+    <section class="card">
+      <h2>proverkacheka.com</h2>
+      <div class="field checkbox">
+        <label>
+          <input type="checkbox" data-path="proverkacheka.enabled">
+          Включён
+        </label>
+      </div>
+      <div class="field">
+        <label>URL API</label>
+        <input type="text" data-path="proverkacheka.url">
+      </div>
+      <div class="field">
+        <label>Токен</label>
+        <div class="secret-wrap">
+          <input type="password" data-path="proverkacheka.token">
+          <button type="button" class="toggle-secret" title="Показать/скрыть">👁</button>
+        </div>
+      </div>
+      <div class="grid-2">
+        <div class="field">
+          <label>Суточный лимит запросов</label>
+          <input type="number" min="1" data-path="proverkacheka.daily_limit">
+        </div>
+        <div class="field">
+          <label>Интервал сервиса (сек)</label>
+          <input type="number" min="30" data-path="proverkacheka.interval_seconds">
+        </div>
+      </div>
+    </section>
+
+    <!-- Сервер -->
+    <section class="card">
+      <h2>Сервер</h2>
+      <div class="grid-2">
+        <div class="field">
+          <label>Host</label>
+          <input type="text" data-path="server.host">
+        </div>
+        <div class="field">
+          <label>Port</label>
+          <input type="number" min="1" max="65535" data-path="server.port">
+        </div>
+      </div>
+    </section>
+
+    <!-- Логи -->
+    <section class="card">
+      <h2>Логирование</h2>
+      <div class="field checkbox">
+        <label>
+          <input type="checkbox" data-path="logging.enabled">
+          Писать в файл
+        </label>
+      </div>
+      <div class="field">
+        <label>Путь к лог-файлу (относительный — от корня проекта)</label>
+        <input type="text" data-path="logging.path">
+      </div>
+    </section>
+
+  </form>
+
+  <div class="actions">
+    <button id="btn-save" type="button">Сохранить</button>
+    <button id="btn-reset" type="button" class="ghost">Сбросить</button>
+    <button id="btn-restart" type="button" hidden>Перезапустить сервис</button>
+  </div>
+</main>
+
+<div id="qr-modal" class="qr-modal" hidden>
+  <div class="qr-backdrop" id="qr-backdrop"></div>
+  <div class="qr-content">
+    <h2>QR с параметрами подключения</h2>
+    <div class="qr-hint">
+      Наведите камеру телефона или скопируйте JSON и передайте его в другое приложение.
+    </div>
+    <div id="qr-container" class="qr-container"></div>
+    <pre id="qr-json" class="qr-json"></pre>
+    <div class="qr-actions">
+      <button id="qr-copy" type="button" class="ghost">Скопировать JSON</button>
+      <button id="qr-close" type="button">Закрыть</button>
+    </div>
+  </div>
+</div>
+
+<script src="/static/qrcode.min.js" defer></script>
+<script src="/static/common.js" defer></script>
+<script src="/static/settings.js" defer></script></body>
+</html>

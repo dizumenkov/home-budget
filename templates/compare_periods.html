@@ -1,0 +1,101 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+<meta charset="utf-8">
+<title>Сравнение периодов — Домашний бюджет</title>
+<script src="/static/chart.umd.min.js"></script>
+
+<link rel="stylesheet" href="/static/buttons.css">
+<link rel="stylesheet" href="/static/common.css">
+<link rel="stylesheet" href="/static/compare_periods.css">
+</head>
+<body>
+<header>
+  <h1>
+    Сравнение периодов по категории
+    <a href="/">← к чекам</a>
+  </h1>
+</header>
+
+<main>
+  <div class="card">
+    <div class="row">
+      <label>Категория
+        <select id="category"><option value="">— выберите —</option></select>
+      </label>
+      <label class="check" title="Включить в расчёт товары без установленной метки">
+        <input type="checkbox" id="include_unset" checked>
+        учитывать товары без метки
+      </label>
+      <button id="btn-build">Построить</button>
+    </div>
+
+    <div class="row presets-row">
+      <span class="presets-label">Пресеты:</span>
+      <button type="button" class="ghost" data-preset="month">Этот месяц к прошлому</button>
+      <button type="button" class="ghost" data-preset="year">Этот год к прошлому</button>
+      <button type="button" class="ghost" data-preset="last30">Последние 30 дней к предыдущим 30</button>
+    </div>
+
+    <div class="periods">
+      <div class="period">
+        <h3>Период 1 (базовый)</h3>
+        <div class="row">
+          <label>с <input type="date" id="p1_from"></label>
+          <label>по <input type="date" id="p1_to"></label>
+        </div>
+      </div>
+      <div class="period">
+        <h3>Период 2 (сравниваемый)</h3>
+        <div class="row">
+          <label>с <input type="date" id="p2_from"></label>
+          <label>по <input type="date" id="p2_to"></label>
+          <button id="btn-prev" type="button" class="ghost"
+                  title="Установить период 1 как предыдущий период такой же длины">
+            ← предыдущий такой же длины
+          </button>
+        </div>
+      </div>
+    </div>
+
+    <div id="status"></div>
+  </div>
+
+  <div class="card" id="result-card" hidden>
+    <div class="totals">
+      <div>«<span id="cat-name"></span>»</div>
+      <div>Период 1: <b id="total1">0</b></div>
+      <div>Период 2: <b id="total2">0</b></div>
+      <div class="delta">
+        Δ: <b id="total-delta">0</b>
+        <span id="total-delta-pct" class="delta-none"></span>
+      </div>
+    </div>
+
+    <div class="chart-wrap" id="chart-wrap" hidden>
+      <canvas id="chart"></canvas>
+      <div class="chart-empty" id="chart-empty" hidden>Нет данных за выбранные периоды</div>
+    </div>
+  </div>
+
+  <div class="card" id="table-card" hidden>
+    <table>
+      <thead>
+        <tr>
+          <th>Метка</th>
+          <th class="num">Период 1</th>
+          <th class="num">Период 2</th>
+          <th class="num">Δ</th>
+          <th class="num">Δ %</th>
+        </tr>
+      </thead>
+      <tbody id="tbody"></tbody>
+    </table>
+  </div>
+</main>
+
+
+<script src="/static/common.js" defer></script>
+<script src="/static/compare_periods.js" defer></script>
+</body>
+</html>

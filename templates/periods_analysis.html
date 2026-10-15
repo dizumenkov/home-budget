@@ -1,0 +1,72 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+<meta charset="utf-8">
+<title>Анализ по периодам — Домашний бюджет</title>
+<link rel="stylesheet" href="/static/buttons.css">
+<link rel="stylesheet" href="/static/common.css">
+<link rel="stylesheet" href="/static/periods_analysis.css">
+<script src="/static/chart.umd.min.js"></script>
+</head>
+<body>
+<header>
+  <h1>
+    Анализ по периодам
+    <a href="/">← к чекам</a>
+  </h1>
+</header>
+
+<main>
+  <div class="card">
+    <div class="row">
+      <label>Категория
+        <select id="category"><option value="">— выберите —</option></select>
+      </label>
+      <label>Период с <input type="date" id="date_from"></label>
+      <label>по <input type="date" id="date_to"></label>
+      <label>Интервал
+        <select id="interval">
+          <option value="day">День</option>
+          <option value="week">Неделя</option>
+          <option value="month" selected>Месяц</option>
+          <option value="quarter">Квартал</option>
+          <option value="year">Год</option>
+        </select>
+      </label>
+      <button id="btn-build">Построить</button>
+    </div>
+    <div id="status"></div>
+  </div>
+
+  <div class="card" id="result-card" hidden>
+    <div class="totals">
+      Категория «<span id="cat-name"></span>» · период
+      <span id="period-range"></span> · интервал <span id="interval-name"></span> ·
+      всего <b id="grand-total">0</b>
+    </div>
+    <div class="table-scroll">
+      <table id="result-table">
+        <thead id="thead"></thead>
+        <tbody id="tbody"></tbody>
+      </table>
+    </div>
+  </div>
+</main>
+
+<div id="rc-modal" class="rc-modal" hidden>
+  <div class="rc-backdrop" id="rc-backdrop"></div>
+  <div class="rc-content">
+    <h2 id="rc-title">Диаграмма</h2>
+    <div class="rc-chart-wrap">
+      <canvas id="rc-chart"></canvas>
+    </div>
+    <div class="rc-actions">
+      <button id="rc-close" type="button">Закрыть</button>
+    </div>
+  </div>
+</div>
+
+<script src="/static/common.js" defer></script>
+<script src="/static/periods_analysis.js" defer></script>
+</body>
+</html>

@@ -1,0 +1,147 @@
+/* ============================================================
+ * common.css — общие стили для всех страниц
+ * ============================================================ */
+
+:root {
+  --bg: #f5f6f8; --panel: #ffffff; --border: #dcdfe4;
+  --accent: #ffcc00; --accent-dark: #e0b200;
+  --text: #1f2328; --muted: #6b7280; --danger: #d33;
+}
+* { box-sizing: border-box; }
+body { margin: 0; background: var(--bg); color: var(--text);
+  font: 14px/1.45 -apple-system, Segoe UI, Roboto, Arial, sans-serif; }
+
+header { background: var(--panel); border-bottom: 1px solid var(--border);
+  padding: 14px 20px; }
+h1 { margin: 0 0 10px; font-size: 18px; }
+h1 a { color: #0a58ca; font-size: 14px; font-weight: 400;
+  margin-left: 12px; text-decoration: none; }
+h1 a:hover { color: #084298; text-decoration: underline; }
+
+.controls { display: flex; flex-wrap: wrap; gap: 10px; align-items: center; }
+.controls label { color: var(--muted); font-size: 13px; }
+
+button { background: var(--accent); border: 1px solid var(--accent-dark);
+  padding: 6px 12px; border-radius: 6px; cursor: pointer; font-weight: 600; }
+button:hover { background: var(--accent-dark); }
+button:disabled { opacity: .5; cursor: not-allowed; }
+button.icon {
+  padding: 6px 10px; min-width: 36px; text-align: center;
+  font-size: 16px; line-height: 1;
+}
+button.ghost { background: #fff; border-color: var(--border); font-weight: 500; padding: 4px 10px; }
+button.ghost:hover { background: #f0f1f3; }
+
+input[type=date] { padding: 5px 8px; border: 1px solid var(--border); border-radius: 6px; }
+
+#status { margin-top: 8px; color: var(--muted); font-size: 13px; min-height: 18px; }
+#fns-limit { color: var(--muted); font-size: 13px; }
+
+main { padding: 16px 20px; }
+
+/* ---------- badge ---------- */
+.badge { display: inline-block; padding: 1px 8px; border-radius: 10px;
+  font-size: 12px; font-weight: 600; white-space: nowrap; }
+.badge.ok { background: #dafbe1; color: #1a7f37; }
+.badge.wait { background: #fff4cc; color: #7a5a00; }
+.badge.err { background: #ffe1e1; color: #b42318; }
+.badge.manual { background: #e1edff; color: #0a58ca; }
+.badge.none { background: #eceef1; color: #6b7280; }
+
+/* ---------- модалка ---------- */
+.modal { position: fixed; inset: 0; z-index: 100;
+  display: flex; align-items: center; justify-content: center; }
+.modal[hidden] { display: none; }
+.modal-backdrop { position: absolute; inset: 0;
+  background: rgba(15, 20, 30, 0.45); }
+.modal-content {
+  position: relative; background: #fff; border-radius: 10px;
+  width: min(1100px, 95vw); height: min(820px, 92vh);
+  box-shadow: 0 24px 64px rgba(0,0,0,0.35);
+  display: flex; overflow: hidden;
+}
+.modal-content iframe {
+  flex: 1; border: 0; width: 100%; height: 100%;
+  background: #f5f6f8;
+}
+.modal-close {
+  position: absolute; top: 8px; right: 8px; z-index: 2;
+  width: 34px; height: 34px; padding: 0; font-size: 16px;
+  background: #fff; border: 1px solid var(--border); border-radius: 6px;
+  box-shadow: 0 1px 4px rgba(0,0,0,0.12);
+}
+.modal-close:hover { background: #ffecec; border-color: #f0c8c8; color: var(--danger); }
+
+/* ---------- всплывающая подсказка ---------- */
+.good-tip {
+  position: fixed; z-index: 200; pointer-events: none;
+  background: #1f2328; color: #f5f6f8; border-radius: 6px;
+  padding: 8px 10px; font-size: 12px; line-height: 1.5;
+  max-width: 340px; box-shadow: 0 6px 20px rgba(0,0,0,0.30);
+  white-space: normal;
+}
+.good-tip[hidden] { display: none; }
+.good-tip .tip-title { font-weight: 600; margin-bottom: 4px;
+  border-bottom: 1px solid #3a3f45; padding-bottom: 4px; }
+.good-tip .row { display: flex; gap: 6px; }
+.good-tip .cat { color: #ffcc00; flex-shrink: 0; }
+.good-tip .val { color: #ffffff; }
+.good-tip .none { color: #9aa0a6; font-style: italic; }
+.good-tip .empty-tip { color: #9aa0a6; font-style: italic; }
+
+/* ============================================================
+ * Расширение common.css — общие стили страниц (кроме главной)
+ * ============================================================ */
+
+/* карточка */
+.card { background: var(--panel); border: 1px solid var(--border);
+  border-radius: 8px; padding: 16px; margin-bottom: 16px; }
+
+/* строки формы */
+.row { display: flex; gap: 12px; flex-wrap: wrap; align-items: center; }
+.row label { color: var(--muted); font-size: 13px; }
+
+/* универсальная таблица (не путать с main table на index) */
+main table { width: 100%; border-collapse: collapse;
+  background: var(--panel); border: 1px solid var(--border);
+  border-radius: 8px; overflow: hidden; }
+main th, main td { padding: 6px 10px; text-align: left;
+  border-bottom: 1px solid var(--border); font-size: 13px; }
+main th { background: #fafbfc; font-weight: 600; }
+main tr:last-child td { border-bottom: none; }
+td.num, th.num { text-align: right; white-space: nowrap; }
+.swatch { display: inline-block; width: 12px; height: 12px;
+  border-radius: 2px; margin-right: 6px; vertical-align: middle; }
+
+/* универсальные поля ввода */
+input[type=text], input[type=number], input[type=datetime-local], select {
+  padding: 6px 10px; border: 1px solid var(--border);
+  border-radius: 6px; font: inherit; background: #fff;
+}
+
+/* чекбокс с подписью */
+.check { display: flex; align-items: center; gap: 6px;
+  color: var(--muted); font-size: 13px; }
+
+/* readonly-значение */
+.readonly {
+  display: inline-block; padding: 6px 10px;
+  background: #f0f1f3; border: 1px solid var(--border);
+  border-radius: 6px; color: #3a3f45;
+  font: inherit;
+}
+
+/* подтверждение в статусе */
+.saved { color: #1a7f37; }
+#status.ok { color: #1a7f37; }
+#status.err { color: var(--danger); }
+
+/* панель кнопок */
+.toolbar { display: flex; gap: 8px; align-items: center;
+  margin-top: 8px; flex-wrap: wrap; }
+button.sm { padding: 4px 10px; font-size: 13px; }
+button.close { background: #fff; border: 1px solid var(--border); color: var(--text); }
+button.close:hover { background: #f0f1f3; }
+button.del { background: #fff; color: var(--danger);
+  border-color: #f0c8c8; padding: 2px 8px; font-size: 12px; }
+button.del:hover { background: #ffecec; }

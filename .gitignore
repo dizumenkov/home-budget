@@ -1,0 +1,26 @@
+# Python
+__pycache__/
+*.py[cod]
+*.egg-info/
+
+# virtualenv
+.venv/
+venv/
+
+# SQLite / данные
+receipts.db
+receipts.db.bak*
+*.sqlite
+
+# рантайм
+run.log
+run.pid
+*.log
+
+# конфиг с секретами
+config.json
+
+# IDE
+.vscode/
+.idea/
+*.swp

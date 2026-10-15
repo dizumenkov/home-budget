@@ -1,0 +1,58 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+<meta charset="utf-8">
+<title>Справочник товаров</title>
+<link rel="stylesheet" href="/static/buttons.css">
+<link rel="stylesheet" href="/static/common.css">
+<link rel="stylesheet" href="/static/goods.css">
+</head>
+<body>
+<header>
+  <h1>
+    Справочник товаров
+    <a href="/">← к чекам</a>
+    <a href="/categories">Категории и метки →</a>
+  </h1>
+</header>
+<main>
+  <div class="card">
+    <div class="row">
+      <input type="text" id="new-name" placeholder="Название товара, например «Молоко»">
+      <button id="btn-add">+ Добавить</button>
+    </div>
+    <div id="status"></div>
+  </div>
+  <div class="card">
+    <table>
+      <thead>
+        <tr>
+          <th>Наименование</th>
+          <th style="width:260px"></th>
+        </tr>
+      </thead>
+      <tbody id="tbody"></tbody>
+    </table>
+  </div>
+</main>
+
+<div id="del-modal" class="del-modal" hidden>
+  <div class="del-backdrop" id="del-backdrop"></div>
+  <div class="del-content">
+    <h2 id="del-title">Удаление товара</h2>
+    <div class="hint">
+      Выберите, на что перевести связанные сырые наименования продуктов,
+      или удалите без переназначения (связи обнулятся в «— не определено —»).
+    </div>
+    <select id="del-select"></select>
+    <div class="del-actions">
+      <button id="del-cancel" class="close" type="button">Отмена</button>
+      <button id="del-confirm" class="danger" type="button">Удалить</button>
+    </div>
+  </div>
+</div>
+
+<script src="/static/common.js" defer></script>
+<script src="/static/goods.js" defer></script>
+</body>
+</html>

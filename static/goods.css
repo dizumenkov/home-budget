@@ -1,0 +1,28 @@
+/* goods.css — стили страницы «Справочник товаров» */
+main { max-width: 900px; }
+
+#status.ok { color: #1a7f37; }
+#status.err { color: var(--danger); }
+
+table { width: 100%; }
+td.actions { white-space: nowrap; width: 260px; text-align: right; }
+td.actions .link { color: #0a58ca; text-decoration: none; margin-right: 8px; }
+td.actions .link:hover { text-decoration: underline; }
+
+/* модалка удаления */
+.del-modal { position: fixed; inset: 0; z-index: 100;
+  display: flex; align-items: center; justify-content: center; }
+.del-modal[hidden] { display: none; }
+.del-backdrop { position: absolute; inset: 0;
+  background: rgba(15, 20, 30, 0.45); }
+.del-content {
+  position: relative; background: #fff; border-radius: 10px;
+  width: min(560px, 92vw); padding: 20px 22px;
+  box-shadow: 0 24px 64px rgba(0,0,0,0.35);
+}
+.del-content h2 { margin: 0 0 10px; font-size: 16px; }
+.del-content .hint { color: var(--muted); font-size: 13px; margin-bottom: 12px; }
+.del-content select { width: 100%; }
+.del-actions { display: flex; gap: 8px; justify-content: flex-end; margin-top: 16px; }
+button.danger { background: #fff; color: var(--danger); border-color: #f0c8c8; }
+button.danger:hover { background: #ffecec; }

@@ -1,0 +1,15 @@
+[Desktop Entry]
+Type=Application
+Version=1.0
+Name=Домашний бюджет
+Comment=Запустить сервис и открыть его в браузере
+Exec=sh -c 'cd "$(dirname "$(readlink -f "$1")")" && exec ./run.sh' _ %k
+Icon=applications-office
+Terminal=false
+Categories=Office;Finance;
+StartupNotify=false
+Actions=stop;
+
+[Desktop Action stop]
+Name=Остановить сервис
+Exec=sh -c 'cd "$(dirname "$(readlink -f "$1")")" && exec ./run.sh stop' _ %k

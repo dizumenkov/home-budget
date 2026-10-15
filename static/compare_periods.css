@@ -1,0 +1,79 @@
+/* compare_periods.css — стили страницы (авто-экстракция) */
+
+:root {
+    --bg: #f5f6f8; --panel: #ffffff; --border: #dcdfe4;
+    --accent: #ffcc00; --accent-dark: #e0b200;
+    --text: #1f2328; --muted: #6b7280; --danger: #d33;
+    --delta-up: #1f6feb;
+    --delta-down: #6b7280;
+  }
+  * { box-sizing: border-box; }
+  body { margin: 0; background: var(--bg); color: var(--text);
+    font: 14px/1.45 -apple-system, Segoe UI, Roboto, Arial, sans-serif; }
+  header { background: var(--panel); border-bottom: 1px solid var(--border);
+    padding: 14px 20px; }
+  h1 { margin: 0 0 4px; font-size: 18px; }
+  h1 a { color: var(--muted); font-size: 14px; font-weight: 400;
+    margin-left: 12px; text-decoration: none; }
+  h1 a:hover { color: var(--text); text-decoration: underline; }
+  main { padding: 16px 20px; max-width: 1200px; }
+  .card { background: var(--panel); border: 1px solid var(--border);
+    border-radius: 8px; padding: 16px; margin-bottom: 16px; }
+  .row { display: flex; gap: 12px; flex-wrap: wrap; align-items: center; }
+  .row label { color: var(--muted); font-size: 13px; }
+  input[type=date], select {
+    padding: 6px 10px; border: 1px solid var(--border);
+    border-radius: 6px; font: inherit; background: #fff;
+  }
+  select { min-width: 200px; }
+  .check { display: flex; align-items: center; gap: 6px;
+    color: var(--muted); font-size: 13px; }
+  button { background: var(--accent); border: 1px solid var(--accent-dark);
+    padding: 6px 14px; border-radius: 6px; cursor: pointer; font-weight: 600; }
+  button:hover { background: var(--accent-dark); }
+  button:disabled { opacity: .5; cursor: not-allowed; }
+  button.ghost { background: #fff; border-color: var(--border); font-weight: 500; }
+  button.ghost:hover { background: #f0f1f3; }
+  #status { margin-top: 10px; color: var(--muted); font-size: 13px;
+    min-height: 18px; }
+  #status.err { color: var(--danger); }
+
+  .presets-row { margin-top: 10px; }
+  .presets-label { color: var(--muted); font-size: 13px; }
+
+  .periods { display: grid; grid-template-columns: 1fr 1fr;
+    gap: 16px; margin-top: 12px; }
+  .period { padding: 12px 14px; border: 1px dashed var(--border);
+    border-radius: 8px; background: #fbfcfd; }
+  .period h3 { margin: 0 0 8px; font-size: 14px; }
+  .period .row { gap: 8px; }
+
+  .totals { display: flex; gap: 24px; flex-wrap: wrap;
+    font-size: 15px; margin-bottom: 12px; }
+  .totals b { font-size: 18px; }
+
+  .chart-wrap { position: relative; height: 420px; }
+  .chart-wrap[hidden] { display: none; }
+  .chart-empty {
+    position: absolute; inset: 0;
+    display: flex; align-items: center; justify-content: center;
+    color: var(--muted); font-style: italic; font-size: 15px;
+    pointer-events: none;
+  }
+  .chart-empty[hidden] { display: none; }
+
+  table { width: 100%; border-collapse: collapse; }
+  th, td { padding: 6px 10px; text-align: left;
+    border-bottom: 1px solid var(--border); font-size: 13px; }
+  th { background: #fafbfc; font-weight: 600; }
+  td.num, th.num { text-align: right; white-space: nowrap; }
+  .swatch { display: inline-block; width: 12px; height: 12px;
+    border-radius: 2px; margin-right: 6px; vertical-align: middle; }
+  .empty { color: var(--muted); font-style: italic; }
+  tr.clickable { cursor: pointer; }
+  tr.clickable:hover td { background: #f0f6ff !important; }
+  tr.row-accent td { background: #ffe4e1; }
+
+  .delta-up { color: var(--delta-up); }
+  .delta-down { color: var(--delta-down); }
+  .delta-none { color: var(--muted); }

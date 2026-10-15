@@ -1,0 +1,42 @@
+{
+  "sqs": {
+    "endpoint_url": "https://message-queue.api.cloud.yandex.net",
+    "region": "ru-central1",
+    "aws_access_key_id": "ВАШ_KEY_ID",
+    "aws_secret_access_key": "ВАШ_SECRET",
+    "queue_url": "https://message-queue.api.cloud.yandex.net/b1g.../your-queue",
+    "wait_time_seconds": 20,
+    "drain_wait_seconds": 1,
+    "max_messages": 10,
+    "visibility_timeout": 60
+  },
+
+  "database": {
+    "path": "receipts.db"
+  },
+
+  "timezone": "Europe/Moscow",
+
+  "scheduler": {
+    "enabled": true,
+    "interval_seconds": 60
+  },
+
+  "proverkacheka": {
+    "enabled": true,
+    "url": "https://proverkacheka.com/api/v1/check/get",
+    "token": "ВАШ_ТОКЕН_ИЗ_ЛИЧНОГО_КАБИНЕТА",
+    "daily_limit": 15,
+    "interval_seconds": 300
+  },
+
+  "server": {
+    "host": "127.0.0.1",
+    "port": 5000
+  },
+
+  "logging": {
+    "enabled": false,
+    "path": "run.log"
+  }
+}
